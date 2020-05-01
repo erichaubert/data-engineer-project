@@ -1,0 +1,16 @@
+plugins {
+    id 'scala'
+    id 'java-library'
+}
+
+dependencies {
+    api 'org.scala-lang:scala-library:2.12.11'
+    api 'com.typesafe.scala-logging:scala-logging_2.12:3.9.2'
+
+    api 'org.apache.spark:spark-core_2.12:2.4.5'
+    api 'org.apache.spark:spark-sql_2.12:2.4.5'
+}
+
+repositories {
+    mavenCentral()
+}
