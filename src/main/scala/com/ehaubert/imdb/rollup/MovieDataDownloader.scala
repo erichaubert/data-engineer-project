@@ -12,7 +12,7 @@ import org.apache.commons.io.FileUtils
 
 object MovieDataDownloader extends LazyLogging {
 
-  def downloadAndExtract(targetPath: String): Unit = {
+  def downloadAndExtract(targetPath: String): String = {
     val targetPathFile = new File(targetPath)
     if(targetPathFile.exists() && targetPathFile.listFiles().length >0){
       logger.info(s"Files already exist. No reason to redownload them! files=${targetPathFile.listFiles().map(_.getName).mkString(",")}")
@@ -21,6 +21,7 @@ object MovieDataDownloader extends LazyLogging {
       downloadFileIfNotExists(zipTarget)
       unzip(zipTarget, targetPathFile)
     }
+    targetPathFile.getAbsolutePath
   }
 
   private def downloadFileIfNotExists(zipTarget: File){
