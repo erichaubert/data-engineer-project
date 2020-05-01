@@ -1,6 +1,6 @@
 package com.ehaubert.spark
 
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{DataFrame, SparkSession}
 
 object SparkSessionProvider {
 

@@ -6,7 +6,7 @@ import org.apache.spark.sql.functions.{explode, from_json, lit}
 
 object ProductionCompanyGenreRollupFactory {
 
-  def create(productionCompanyPerMovieExplodedDF: DataFrame)(implicit spark: SparkSession): Unit = {
+  def create(outputDirectory: String, productionCompanyPerMovieExplodedDF: DataFrame)(implicit spark: SparkSession): Unit = {
     import spark.implicits._
 
     productionCompanyPerMovieExplodedDF
@@ -21,6 +21,8 @@ object ProductionCompanyGenreRollupFactory {
       .groupBy($"production_company_id", $"production_company_name", $"production_year")
       .pivot($"genre")
       .sum("pivot_count")
-      .show(100)
+      .coalesce(1)
+      .write
+      .parquet(s"file://$outputDirectory/productionCompanyAnnualRollup")
   }
 }

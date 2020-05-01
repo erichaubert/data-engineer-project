@@ -1,6 +1,11 @@
 plugins {
     id 'scala'
     id 'java-library'
+    id 'application'
+}
+
+application {
+    mainClassName = 'com.ehaubert.imdb.rollup.ImdbRollupJob'
 }
 
 dependencies {

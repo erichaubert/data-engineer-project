@@ -1,10 +1,9 @@
 package com.ehaubert.imdb.rollup.productioncompany
 
 import com.ehaubert.imdb.rollup.ImdbJsonArraySchema
-import com.ehaubert.imdb.rollup.ImdbRollupJob.movieMetaDataDF
-import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.apache.spark.sql.functions.{explode, from_json}
 import org.apache.spark.sql.types.LongType
+import org.apache.spark.sql.{DataFrame, SparkSession}
 
 object MovieToProductionCompanyDataFrameFactory {
 

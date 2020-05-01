@@ -7,7 +7,7 @@ object ProductionCompanyAnnualFinancialRollupFactory {
   def create(outputDirectory: String, productionCompanyPerMovieExplodedDF: DataFrame)(implicit spark: SparkSession): Unit ={
     import spark.implicits._
 
-    val annualProductionCompanyDF = productionCompanyPerMovieExplodedDF
+    productionCompanyPerMovieExplodedDF
       .groupBy($"production_company_id", $"production_year")
       .agg(
         first("production_company_name").as("production_company_name"),//I would want to validate that all data is actually the same here vs assuming
@@ -16,9 +16,8 @@ object ProductionCompanyAnnualFinancialRollupFactory {
         sum($"revenue").minus(sum($"budget")).as("annual_profit"),
         avg($"popularity").as("average_movie_popularity")
       )
-//    annualProductionCompanyDF
-//      .coalesce(1)
-//      .write
-//      .parquet(s"file://$outputDirectory/productionComapnyAnnualRollup")
+      .coalesce(1)
+      .write
+      .parquet(s"file://$outputDirectory/productionCompanyAnnualRollup")
   }
 }
