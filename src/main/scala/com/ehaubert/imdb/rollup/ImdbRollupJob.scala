@@ -14,6 +14,7 @@ object ImdbRollupJob extends App with LazyLogging {
   //Adding a little entropy here as multiple runs of this job might be something we want to keep around depending on
   //idempotency requirements
   val outputDirectory = new File(s"results/jobTimeStamp=${System.currentTimeMillis()}/").getAbsolutePath
+  logger.info(s"base output directory for results=$outputDirectory")
 
   val t0 = System.currentTimeMillis()
   implicit val spark: SparkSession = SparkSessionProvider.sparkSession
