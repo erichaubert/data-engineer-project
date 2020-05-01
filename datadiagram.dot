@@ -1,0 +1,60 @@
+digraph data_model {
+    graph [pad="0.5", nodesep="0.5", ranksep="2"];
+    node [shape=plain]
+    rankdir=LR;
+
+    prodGenre [label=<
+    <table border="0" cellborder="1" cellspacing="0">
+      <tr><td><i>CompanyGenreRollup</i></td><td></td></tr>
+      <tr><td>production_company_id</td><td>long</td></tr>
+      <tr><td>production_company_name</td><td>string</td></tr>
+      <tr><td>production_year</td><td>integer</td></tr>
+      <tr><td>Action</td><td>long</td></tr>
+      <tr><td>Adventure</td><td>long</td></tr>
+      <tr><td>Animation</td><td>long</td></tr>
+      <tr><td>Comedy</td><td>long</td></tr>
+      <tr><td>Crime</td><td>long</td></tr>
+      <tr><td>Documentary</td><td>long</td></tr>
+      <tr><td>Drama</td><td>long</td></tr>
+      <tr><td>Family</td><td>long</td></tr>
+      <tr><td>Fantasy</td><td>long</td></tr>
+      <tr><td>Foreign</td><td>long</td></tr>
+      <tr><td>History</td><td>long</td></tr>
+      <tr><td>Horror</td><td>long</td></tr>
+      <tr><td>Music</td><td>long</td></tr>
+      <tr><td>Mystery</td><td>long</td></tr>
+      <tr><td>Romance</td><td>long</td></tr>
+      <tr><td>Science_Fiction</td><td>long</td></tr>
+      <tr><td>TV_Movie</td><td>long</td></tr>
+      <tr><td>Thriller</td><td>long</td></tr>
+      <tr><td>War</td><td>long</td></tr>
+      <tr><td>Western</td><td>long</td></tr>
+    </table>>];
+
+
+     prodFinancial [label=<
+        <table border="0" cellborder="1" cellspacing="0">
+          <tr><td><i><b>CompanyFinancialRollup</b></i></td><td></td></tr>
+           <tr><td>production_company_id</td><td>long</td></tr>
+           <tr><td>production_year</td><td>integer</td></tr>
+           <tr><td>production_company_name</td><td>string</td></tr>
+           <tr><td>annual_budget</td><td>long</td></tr>
+           <tr><td>annual_revenue</td><td>long</td></tr>
+           <tr><td>annual_profit</td><td>long</td></tr>
+           <tr><td>average_movie_popularity</td><td>double</td></tr>
+        </table>>];
+
+
+     genreRollup [label=<
+        <table border="0" cellborder="1" cellspacing="0">
+          <tr><td><i><b>GenreRollup</b></i></td><td></td></tr>
+           <tr><td>genre</td><td>string</td></tr>
+            <tr><td>production_year</td><td>integer</td></tr>
+            <tr><td>total_movies</td><td>long</td></tr>
+            <tr><td>annual_budget</td><td>double</td></tr>
+            <tr><td>annual_revenue</td><td>double</td></tr>
+            <tr><td>annual_profit</td><td>double</td></tr>
+        </table>>];
+
+
+}

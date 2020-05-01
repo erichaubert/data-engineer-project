@@ -2,6 +2,7 @@ package com.ehaubert.imdb.rollup
 
 import java.io.File
 
+import com.ehaubert.imdb.rollup.genre.GenreRollupFactory
 import com.ehaubert.imdb.rollup.productioncompany.{MovieToProductionCompanyDataFrameFactory, ProductionCompanyAnnualFinancialRollupFactory, ProductionCompanyGenreRollupFactory}
 import com.ehaubert.spark.SparkSessionProvider
 import com.typesafe.scalalogging.LazyLogging
@@ -21,6 +22,9 @@ object ImdbRollupJob extends App with LazyLogging {
 
   val movieMetaDataDF = MovieMetadataDataFrameFactory.create(s"$fullPathToUnzippedFiles/movies_metadata.csv")
   movieMetaDataDF.cache()
+
+  GenreRollupFactory.create(outputDirectory, movieMetaDataDF)
+
   val productionCompanyPerMovieExplodedDF = MovieToProductionCompanyDataFrameFactory.create(movieMetaDataDF)
   ProductionCompanyAnnualFinancialRollupFactory.create(outputDirectory, productionCompanyPerMovieExplodedDF)
   ProductionCompanyGenreRollupFactory.create(outputDirectory, productionCompanyPerMovieExplodedDF)
