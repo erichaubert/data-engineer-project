@@ -23,6 +23,6 @@ object ProductionCompanyGenreRollupFactory {
       .sum("pivot_count")
       .coalesce(1)
       .write
-      .parquet(s"file://$outputDirectory/productionCompanyAnnualRollup")
+      .parquet(s"file://$outputDirectory/productionCompanyAnnualGenreRollup")
   }
 }

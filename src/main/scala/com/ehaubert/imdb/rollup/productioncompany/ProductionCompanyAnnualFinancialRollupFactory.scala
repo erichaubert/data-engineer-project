@@ -18,6 +18,6 @@ object ProductionCompanyAnnualFinancialRollupFactory {
       )
       .coalesce(1)
       .write
-      .parquet(s"file://$outputDirectory/productionCompanyAnnualRollup")
+      .parquet(s"file://$outputDirectory/productionCompanyAnnualFinancialRollup")
   }
 }
